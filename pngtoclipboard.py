@@ -6,6 +6,23 @@ import time
 
 # Set the path to the folder that is receiving your screenshots
 screenshot_folder = os.path.expanduser("~/Desktop/Screenshots") 
+pytesseract.pytesseract.tesseract_cmd = r'/opt/homebrew/bin/tesseract'
+
+def delete_all_screenshots():
+    
+    # Iterating in the screenshots folder
+    for f in os.listdir(screenshot_folder):
+    
+        # If is a screenshot (and not a video)
+        if f.endswith(".png"):
+            
+            # Remove the screenshot 
+            try:
+                os.remove(os.path.join(screenshot_folder, f))
+            
+            # Exception
+            except Exception as e:
+                print(f"Failed to delete {f}: {e}")
 
 def get_latest_screenshot():
     
@@ -63,8 +80,12 @@ def main():
             time.sleep(0.1)
 
     except KeyboardInterrupt:
-        print("Exiting the program.")
+        delete_all_screenshots()
+        print("\nExiting the program.")
+
 
 # This will run only if the script is executed directly
 if __name__ == "__main__":
-    main()
+    main() 
+
+
