@@ -4,8 +4,10 @@ import pytesseract
 import pyperclip
 import time
 
-# Set the path to the folder that is receiving your screenshots
-screenshot_folder = os.path.expanduser("~/Desktop/Screenshots") 
+# Set the path to the folder that is receiving your screenshots -> Be careful this will delete the files in that folder
+screenshot_folder = os.path.expanduser("~/Desktop")
+
+# Path to tesseract
 pytesseract.pytesseract.tesseract_cmd = r'/opt/homebrew/bin/tesseract'
 
 def delete_all_screenshots():
