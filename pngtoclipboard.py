@@ -4,7 +4,7 @@ import pytesseract
 import pyperclip
 import time
 
-# Set the path to the folder that is receiving your screenshots -> Be careful this will delete the files in that folder
+# Set the path to the folder that is receiving your screenshots
 screenshot_folder = os.path.expanduser("~/Desktop")
 
 # Path to tesseract
@@ -26,6 +26,7 @@ def delete_all_screenshots():
             except Exception as e:
                 print(f"Failed to delete {f}: {e}")
 
+# This function deletes all the screenshots from the folder you choosed
 def get_latest_screenshot():
     
     # List all PNG files in the screenshots folder
@@ -82,7 +83,8 @@ def main():
             time.sleep(0.1)
 
     except KeyboardInterrupt:
-        delete_all_screenshots()
+        # Enable this if you want to delete the screenshots you took
+        # delete_all_screenshots()
         print("\nExiting the program.")
 
 
