@@ -56,8 +56,9 @@ def extract_text_from_image(image_path):
         return ""
 
 def main():
-    
-    seen_files = set()  
+    print("Do you want to delete the files from the folder after closing the program? (y or n)")
+    flag = input()
+    seen_files = set()
     print("Monitoring for new screenshots. Press Ctrl+C to exit.")
     try:
         while True:
@@ -84,7 +85,8 @@ def main():
 
     except KeyboardInterrupt:
         # Enable this if you want to delete the screenshots you took
-        # delete_all_screenshots()
+        if flag.lower() == "y" or flag.lower() == "yes" :
+            delete_all_screenshots()
         print("\nExiting the program.")
 
 
